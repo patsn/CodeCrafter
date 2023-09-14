@@ -1,0 +1,31 @@
+:root {
+	--black: #242424;
+	--white: #dce1e9;
+	--smoothblue: #66c3ff;
+	--pink: #d4afb9;
+	--brightblue: #53d8fb;
+
+	--dark: var(--black);
+	--light: var(--white);
+	--primary: var(--smoothblue);
+	--secondary: var(--pink);
+	--tertiary: var(--brightblue);
+}
+
+.App {
+	width: 100vw;
+	height: 100vh;
+	background-color: var(--black);
+}
+
+.login-box {
+	background-color: var(--white);
+	border-radius: 10px;
+}
+
+.headerText1 {
+	color: var(--dark);
+}
+.headerText2 {
+	color: var(--primary);
+}
