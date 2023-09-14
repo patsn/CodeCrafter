@@ -2,7 +2,9 @@
 
 # API
 
-The API requires environment (.env) variables to be set. The following variables are required:
+### Environment Variables
+The API requires environment (.env) variables to be set. <br/>
+The following variables are required:
 
 | Name          | Value                       |
 | ------------- | --------------------------- |
@@ -12,5 +14,3 @@ The API requires environment (.env) variables to be set. The following variables
 | MONGO_PASS    | `MongoDB Password`          |
 | MONGO_DB      | `MongoDB URL`               |
 | NODE_ENV      | `development` &#124; `prod` |
-
----
