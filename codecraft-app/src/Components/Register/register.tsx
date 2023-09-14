@@ -48,7 +48,8 @@ export default function RegisterPage(): JSX.Element {
 		<Form className="login-box p-4" onSubmit={handleSubmit}>
 			<h1 className="text-center d-flex justify-content-center">
 				<div className="headerText2">Code</div>
-				<div className="headerText1">Crafter.</div>
+				<div className="headerText1">Crafter</div>
+				<div className="headerText2">.</div>
 			</h1>
 			<hr className="mb-4" />
 			<h6 className="text-center">Register</h6>
