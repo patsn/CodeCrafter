@@ -4,7 +4,7 @@
 
 # API
 
-The API requires environment (.env) variables to be set. The following variables are needed:
+The API requires environment (.env) variables to be set. The following variables are required:
 
 | Name          | Value                       |
 | ------------- | --------------------------- |
