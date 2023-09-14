@@ -1,5 +1,3 @@
-# CodeCrafter
-
 ## ![CodeCrafter](CodeCrafter.png)
 
 # API
