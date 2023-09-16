@@ -4,5 +4,6 @@
     ":label(RENOVATE-BOT)",
     ":automergeRequireAllStatusChecks",
     ":automergeMinor"
-  ]
+  ],
+  "schedule": ["every saturday"]
 }
