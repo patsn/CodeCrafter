@@ -1,6 +1,8 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { User } from "../../Interfaces/user";
 import { Tokens } from "../../Interfaces/tokens";
+import axios from "axios";
+import { useJwt, isExpired } from "react-jwt";
 
 //Context interface
 interface ContextInterface {
@@ -22,6 +24,49 @@ export const useContextData = () => useContext<ContextInterface>(Context);
 export const DataProvider = ({ children }: any) => {
 	const [tokens, setTokens] = useState<Tokens>({ accessToken: "", refreshToken: "" });
 	const [data, setData] = useState<User>({ username: "", skills: [] });
+
+	useEffect(() => {
+		if (!isExpired(tokens.accessToken) && tokens.accessToken && data.username !== "") {
+			axios
+				.post("http://localhost:3001/commitData", data, {
+					headers: {
+						Authorization: "Bearer " + tokens.accessToken,
+					},
+				})
+				.catch((err): void => {
+					console.log(err);
+				});
+		}
+		if (isExpired(tokens.accessToken) && tokens.refreshToken !== "" && data.username !== "") {
+			// console.log("refreshing");
+			axios
+				.post("http://localhost:3001/refreshAccess", {
+					refreshToken: tokens.refreshToken,
+				})
+				.then((res): void => {
+					if (res.data.accessToken) {
+						setTokens({ accessToken: res.data.accessToken, refreshToken: tokens.refreshToken });
+						window.localStorage.setItem("accessToken", res.data.accessToken);
+					}
+				})
+				.then(() => {
+					if (!isExpired(tokens.accessToken) && tokens.accessToken) {
+						axios
+							.post("http://localhost:3001/commitData", data, {
+								headers: {
+									Authorization: "Bearer " + tokens.accessToken,
+								},
+							})
+							.catch((err): void => {
+								console.log(err);
+							});
+					}
+				})
+				.catch((err): void => {
+					console.log(err);
+				});
+		}
+	}, [data, tokens]);
 
 	return <Context.Provider value={{ tokens, setTokens, data, setData }}>{children}</Context.Provider>;
 };

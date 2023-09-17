@@ -16,6 +16,7 @@ app.use("/register", require("./Routes/POST/register.js")(mongo));
 app.use("/refreshAccess", require("./Routes/POST/refreshAccess.js")(mongo));
 app.use("/login", require("./Routes/POST/login.js")(mongo));
 app.use("/logout", require("./Routes/DELETE/logout.js")(mongo));
+app.use("/commitData", require("./Routes/POST/commitData.js")(mongo));
 
 //==============DEV ROUTES
 if (process.env.NODE_ENV === "development") {

@@ -12,7 +12,7 @@ module.exports = function (mongo) {
 		}
 		try {
 			if (await bcrypt.compare(req.body.password, userData.password)) {
-				const accessToken = genToken({ username: userData.username }, process.env.SECRET_TOKEN, "10m");
+				const accessToken = genToken({ username: userData.username }, process.env.SECRET_TOKEN, "10s");
 				const refreshToken = genToken({ username: userData.username }, process.env.REFRESH_TOKEN, "3d");
 				await mongo.collection("refreshTokens").insertOne({ refreshToken: refreshToken });
 				res.json({ accessToken: accessToken, refreshToken: refreshToken });
