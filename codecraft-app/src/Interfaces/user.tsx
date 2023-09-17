@@ -1,6 +1,9 @@
 export interface User {
 	username: string;
 	skills: Skill[];
+	//TODO trackingTime
+	//TODO skillListStarted
+	//TODO availablePoints
 }
 export interface Skill {
 	name: string;

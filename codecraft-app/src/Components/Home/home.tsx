@@ -58,7 +58,7 @@ export default function HomePage(): JSX.Element {
 				<Button
 					variant="warning"
 					onClick={() => {
-						navigate("/game");
+						navigate("/stats");
 					}}>
 					Start
 				</Button>

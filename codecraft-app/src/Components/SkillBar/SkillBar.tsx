@@ -186,7 +186,7 @@ export default function SkillBar(props: { skills: Skill[] }): JSX.Element {
 
 	return (
 		<>
-			<h4 className="white text-center m-3 ">Dein Fortschritt</h4>
+			<h4 className="white text-center m-3 ">Your progress:</h4>
 			<div className="d-flex flex-wrap gap-3 justify-content-center">
 				{props.skills.map((skill, index) =>
 					!skill.mastered ? (

@@ -5,7 +5,7 @@ import { useContextData } from "../Context/Provider";
 import SkillBar from "../SkillBar/SkillBar";
 import NavBar from "../Navbar/navbar";
 
-export default function GamePage(): JSX.Element {
+export default function StatPage(): JSX.Element {
 	const { tokens, data } = useContextData();
 	const navigate = useNavigate();
 

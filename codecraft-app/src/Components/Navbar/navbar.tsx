@@ -17,8 +17,9 @@ export default function NavBar(props: { data: User }): JSX.Element {
 			<Navbar.Toggle className="me-2" />
 			<Navbar.Collapse className="px-3">
 				<Nav className="me-auto">
-					<Nav.Link href="/home">Home</Nav.Link>
-					<Nav.Link href="#features">Stats</Nav.Link>
+					{/* <Nav.Link href="/home">Home</Nav.Link> */}
+					<Nav.Link onClick={() => navigate("/track")}>Time tracking</Nav.Link>
+					<Nav.Link onClick={() => navigate("/stats")}>Stats</Nav.Link>
 				</Nav>
 				<div className="pr-3 d-flex justify-content-end">
 					<Navbar.Text className="mx-2">Hey, {props.data.username}!</Navbar.Text>

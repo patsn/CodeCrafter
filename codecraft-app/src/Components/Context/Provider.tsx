@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { User } from "../../Interfaces/user";
 import { Tokens } from "../../Interfaces/tokens";
 import axios from "axios";
-import { useJwt, isExpired } from "react-jwt";
+import { isExpired } from "react-jwt";
 
 //Context interface
 interface ContextInterface {
