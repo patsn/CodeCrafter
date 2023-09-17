@@ -65,6 +65,11 @@ export const DataProvider = ({ children }: any) => {
 				.catch((err): void => {
 					console.log(err);
 				});
+			if (isExpired(tokens.refreshToken)) {
+				setTokens({ accessToken: "", refreshToken: "" });
+				window.localStorage.removeItem("accessToken");
+				window.localStorage.removeItem("refreshToken");
+			}
 		}
 	}, [data, tokens]);
 
