@@ -72,7 +72,7 @@ export default function SkillBar(props: { skills: Skill[] }): JSX.Element {
 		//TODO: make this function more efficient
 		switch (level) {
 			case 1:
-				return exp / 5;
+				return (exp / 5) * 100;
 			case 2:
 				return ((exp - 5) / (11 - 5)) * 100;
 			case 3:
