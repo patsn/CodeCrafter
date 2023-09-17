@@ -6,8 +6,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import LoginPage from "./Components/Login/login";
 import ErrorPage from "./Components/Error/errorPage";
 import HomePage from "./Components/Home/home";
-import { DataProvider } from "./Components/Context/Provider";
 import RegisterPage from "./Components/Register/register";
+import GamePage from "./Components/Game/game";
+import { DataProvider } from "./Components/Context/Provider";
 
 function App(): JSX.Element {
 	const router = createBrowserRouter([
@@ -32,17 +33,19 @@ function App(): JSX.Element {
 			element: <ErrorPage />,
 		},
 		{
+			path: "/game",
+			element: <GamePage />,
+		},
+		{
 			path: "*",
 			element: <ErrorPage />,
 			// errorElement: <ErrorPage />,
 		},
 	]);
 	return (
-		<div className="App d-flex justify-content-center align-items-center">
-			<DataProvider>
-				<RouterProvider router={router} />
-			</DataProvider>
-		</div>
+		<DataProvider>
+			<RouterProvider router={router} />
+		</DataProvider>
 	);
 }
 

@@ -1,15 +1,35 @@
 :root {
+	/* Theme 1 */
+	/* cffcff-aaefdf-9ee37d-63c132-358600 */
+	--mintgreen: #cffcff;
+	--tiffanyblue: #aaefdf;
+	--lightgreen: #9ee37d;
+	--kellygreen: #63c132;
+	--indiagreen: #358600;
+
+	/* Theme 2 */
+	/* 17bebb-2e282a-cd5334-edb88b-fad8d6 */
+	--raisinblack: #2e282a;
+	--verdigris: #17bebb;
+	--jasper: #d48672;
+	--buff: #edb88b;
+	--mistyrose: #fad8d6;
+
+	/* Theme 3 */
+	/* Default Colors */
 	--black: #242424;
 	--white: #dce1e9;
-	--smoothblue: #66c3ff;
-	--pink: #d4afb9;
-	--brightblue: #53d8fb;
 
-	--dark: var(--black);
-	--light: var(--white);
-	--primary: var(--smoothblue);
-	--secondary: var(--pink);
-	--tertiary: var(--brightblue);
+	/* ===================================== */
+	/* Default Colors */
+	--black: #242424;
+	--white: var(--mintgreen);
+	--dark: var(var(--indiagreen));
+	--light: var(--lightgreen);
+	--primary: var(--kellygreen);
+	--secondary: var(--tiffanyblue);
+	--tertiary: var(--mintgreen);
+	/* ===================================== */
 }
 
 .App {
@@ -28,4 +48,42 @@
 }
 .headerText2 {
 	color: var(--primary);
+}
+
+.white {
+	color: var(--white);
+}
+.background {
+	background-color: var(--dark);
+	height: auto;
+}
+
+.bg-customDark {
+	color: var(--dark) !important;
+	background-color: var(--kellygreen) !important;
+}
+
+.customOverflow {
+	max-height: 100vh;
+	width: 100vw;
+	overflow: auto;
+}
+
+.customcardGood {
+	background: var(--light) !important;
+}
+
+.customcardBad {
+	background: var(--secondary) !important;
+}
+
+.addImage {
+	background: var(--tertiary) !important;
+	border: 1px solid var(--white) !important;
+	opacity: 0.2;
+	cursor: pointer;
+	border-radius: 100%;
+}
+.addImage:hover {
+	opacity: 0.8;
 }
