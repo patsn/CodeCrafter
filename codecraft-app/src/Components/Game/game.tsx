@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useContextData } from "../Context/Provider";
 
-import SkillBar from "../Skill/SkillBar";
+import SkillBar from "../SkillBar/SkillBar";
 import NavBar from "../Navbar/navbar";
 
 export default function GamePage(): JSX.Element {
