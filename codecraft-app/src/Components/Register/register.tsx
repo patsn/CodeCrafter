@@ -55,7 +55,9 @@ export default function RegisterPage(): JSX.Element {
 				<hr className="mb-4" />
 				<h6 className="text-center">Register</h6>
 
-				{(!username || !password) && submit && <Alert variant="warning">Username or password missing.</Alert>}
+				{(!username || !password) && submit && (
+					<Alert variant="warning">Username or password missing.</Alert>
+				)}
 
 				<Form.Group className="mb-3" controlId="formBasicText">
 					<Form.Control

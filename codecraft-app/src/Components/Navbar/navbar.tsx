@@ -8,7 +8,12 @@ import { User } from "../../Interfaces/user";
 export default function NavBar(props: { data: User }): JSX.Element {
 	const navigate = useNavigate();
 	return (
-		<Navbar className="bg-body-tertiary" expand="md" fixed="top" data-bs-theme="dark" sticky="top">
+		<Navbar
+			className="bg-body-tertiary"
+			expand="md"
+			fixed="top"
+			data-bs-theme="dark"
+			sticky="top">
 			<Navbar.Brand className="d-flex px-3">
 				<div className="headerText2">Code</div>
 				<div className="headerText1 white">Crafter</div>
@@ -22,13 +27,17 @@ export default function NavBar(props: { data: User }): JSX.Element {
 					<Nav.Link onClick={() => navigate("/stats")}>Stats</Nav.Link>
 				</Nav>
 				<div className="pr-3 d-flex justify-content-end">
-					<Navbar.Text className="mx-2">Hey, {props.data.username}!</Navbar.Text>
+					<Navbar.Text className="mx-2">
+						Hey, {props.data.username}!
+					</Navbar.Text>
 					<Button
 						variant="outline-danger"
 						onClick={() => {
 							axios.delete("http://localhost:3001/logout", {
 								data: {
-									refreshToken: window.localStorage.getItem("refreshToken") as string,
+									refreshToken: window.localStorage.getItem(
+										"refreshToken",
+									) as string,
 								},
 							});
 

@@ -3,7 +3,9 @@ module.exports = function (mongo) {
 	const router = express.Router();
 
 	router.delete("/", async (req, res) => {
-		await mongo.collection("refreshTokens").deleteOne({ refreshToken: req.body.refreshToken });
+		await mongo
+			.collection("refreshTokens")
+			.deleteOne({ refreshToken: req.body.refreshToken });
 		res.sendStatus(204);
 	});
 

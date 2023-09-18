@@ -190,8 +190,13 @@ export default function SkillBar(props: { skills: Skill[] }): JSX.Element {
 			<div className="d-flex flex-wrap gap-3 justify-content-center">
 				{props.skills.map((skill, index) =>
 					!skill.mastered ? (
-						<Card style={{ width: "18rem" }} key={index} className="customcardBad">
-							<Card.Header className="d-flex justify-content-between align-items-center" style={{ height: "4rem" }}>
+						<Card
+							style={{ width: "18rem" }}
+							key={index}
+							className="customcardBad">
+							<Card.Header
+								className="d-flex justify-content-between align-items-center"
+								style={{ height: "4rem" }}>
 								{skill.name}
 								{!checkLevelUp(skill.stats.exp_points, skill.stats.level) ? (
 									<Button
@@ -220,10 +225,17 @@ export default function SkillBar(props: { skills: Skill[] }): JSX.Element {
 								)}
 							</Card.Header>
 							<Card.Body>
-								<Card.Subtitle className="mb-2 text-muted">Level: {skill.stats.level}🧙</Card.Subtitle>
-								<Card.Subtitle className="text-muted">Glows needed: {neededExp(skill.stats.exp_points, skill.stats.level)}☄️</Card.Subtitle>
+								<Card.Subtitle className="mb-2 text-muted">
+									Level: {skill.stats.level}🧙
+								</Card.Subtitle>
+								<Card.Subtitle className="text-muted">
+									Glows needed:{" "}
+									{neededExp(skill.stats.exp_points, skill.stats.level)}☄️
+								</Card.Subtitle>
 							</Card.Body>
-							<Card.Footer className="text-muted text-center" style={{ height: "3.5rem" }}>
+							<Card.Footer
+								className="text-muted text-center"
+								style={{ height: "3.5rem" }}>
 								{checkLevelUp(skill.stats.exp_points, skill.stats.level) ? (
 									<Button
 										variant="warning"
@@ -231,7 +243,10 @@ export default function SkillBar(props: { skills: Skill[] }): JSX.Element {
 											setData({
 												...data,
 												skills: data.skills.map((skillToLevel) => {
-													if (skillToLevel.name === skill.name && skillToLevel.stats.level < 25) {
+													if (
+														skillToLevel.name === skill.name &&
+														skillToLevel.stats.level < 25
+													) {
 														return {
 															...skillToLevel,
 															stats: {
@@ -239,7 +254,10 @@ export default function SkillBar(props: { skills: Skill[] }): JSX.Element {
 																level: skillToLevel.stats.level + 1,
 															},
 														};
-													} else if (skillToLevel.name === skill.name && skillToLevel.stats.level === 25) {
+													} else if (
+														skillToLevel.name === skill.name &&
+														skillToLevel.stats.level === 25
+													) {
 														return {
 															...skillToLevel,
 															mastered: true,
@@ -254,29 +272,56 @@ export default function SkillBar(props: { skills: Skill[] }): JSX.Element {
 									</Button>
 								) : (
 									<>
-										{Math.floor(normalizeToPercent(skill.stats.exp_points, skill.stats.level)).toString() + "%"}
-										<ProgressBar variant="customDark" now={normalizeToPercent(skill.stats.exp_points, skill.stats.level)} />
+										{Math.floor(
+											normalizeToPercent(
+												skill.stats.exp_points,
+												skill.stats.level,
+											),
+										).toString() + "%"}
+										<ProgressBar
+											variant="customDark"
+											now={normalizeToPercent(
+												skill.stats.exp_points,
+												skill.stats.level,
+											)}
+										/>
 									</>
 								)}
 							</Card.Footer>
 						</Card>
 					) : (
-						<Card style={{ width: "18rem" }} key={index} className="customcardGood">
-							<Card.Header className="d-flex justify-content-between align-items-center" style={{ height: "4rem" }}>
+						<Card
+							style={{ width: "18rem" }}
+							key={index}
+							className="customcardGood">
+							<Card.Header
+								className="d-flex justify-content-between align-items-center"
+								style={{ height: "4rem" }}>
 								{skill.name}
 							</Card.Header>
 							<Card.Body>
-								<Card.Subtitle className="mb-2 text-muted">Level: 25🧙</Card.Subtitle>
-								<Card.Subtitle className="text-muted">You worked 500 Hours with {skill.name} !</Card.Subtitle>
+								<Card.Subtitle className="mb-2 text-muted">
+									Level: 25🧙
+								</Card.Subtitle>
+								<Card.Subtitle className="text-muted">
+									You worked 500 Hours with {skill.name} !
+								</Card.Subtitle>
 							</Card.Body>
-							<Card.Footer className="text-muted text-center align-items-center d-flex" style={{ height: "3.5rem" }}>
+							<Card.Footer
+								className="text-muted text-center align-items-center d-flex"
+								style={{ height: "3.5rem" }}>
 								<Card.Subtitle>Skill Mastered!</Card.Subtitle>
 							</Card.Footer>
 						</Card>
-					)
+					),
 				)}
 			</div>
-			<Image src={logo} className="addImage" style={{ position: "absolute", bottom: 15, right: 15 }} width={80} />
+			<Image
+				src={logo}
+				className="addImage"
+				style={{ position: "absolute", bottom: 15, right: 15 }}
+				width={80}
+			/>
 		</>
 	);
 }

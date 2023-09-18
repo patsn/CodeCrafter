@@ -45,7 +45,9 @@ export default function HomePage(): JSX.Element {
 					onClick={() => {
 						axios.delete("http://localhost:3001/logout", {
 							data: {
-								refreshToken: window.localStorage.getItem("refreshToken") as string,
+								refreshToken: window.localStorage.getItem(
+									"refreshToken",
+								) as string,
 							},
 						});
 

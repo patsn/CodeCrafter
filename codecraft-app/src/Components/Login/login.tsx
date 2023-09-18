@@ -19,14 +19,22 @@ export default function LoginPage(): JSX.Element {
 	}
 
 	useEffect((): void => {
-		if (window.localStorage.getItem("accessToken") && window.localStorage.getItem("refreshToken")) {
+		if (
+			window.localStorage.getItem("accessToken") &&
+			window.localStorage.getItem("refreshToken")
+		) {
 			axios
 				.post("http://localhost:3001/refreshAccess", {
 					refreshToken: window.localStorage.getItem("refreshToken"),
 				})
 				.then((res): void => {
 					if (res.data.accessToken) {
-						setTokens({ accessToken: res.data.accessToken, refreshToken: window.localStorage.getItem("refreshToken") as string });
+						setTokens({
+							accessToken: res.data.accessToken,
+							refreshToken: window.localStorage.getItem(
+								"refreshToken",
+							) as string,
+						});
 						window.localStorage.setItem("accessToken", res.data.accessToken);
 						navigate("/home"); // Use navigate to change the URL
 					}
@@ -56,7 +64,10 @@ export default function LoginPage(): JSX.Element {
 				.post("http://localhost:3001/login", { username, password })
 				.then((res): void => {
 					if (res.data.accessToken && res.data.refreshToken) {
-						setTokens({ accessToken: res.data.accessToken, refreshToken: res.data.refreshToken });
+						setTokens({
+							accessToken: res.data.accessToken,
+							refreshToken: res.data.refreshToken,
+						});
 						window.localStorage.setItem("accessToken", res.data.accessToken);
 						window.localStorage.setItem("refreshToken", res.data.refreshToken);
 						navigate("/home"); // Use navigate to change the URL
@@ -82,8 +93,12 @@ export default function LoginPage(): JSX.Element {
 				<hr className="mb-4" />
 				<h6 className="text-center">Login</h6>
 
-				{(!username || !password) && submit && <Alert variant="warning">Username or password missing.</Alert>}
-				{wrongCredentials && <Alert variant="danger">Wrong username or password.</Alert>}
+				{(!username || !password) && submit && (
+					<Alert variant="warning">Username or password missing.</Alert>
+				)}
+				{wrongCredentials && (
+					<Alert variant="danger">Wrong username or password.</Alert>
+				)}
 
 				<Form.Group className="mb-3" controlId="formBasicText">
 					<Form.Control

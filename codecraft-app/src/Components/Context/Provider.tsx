@@ -14,7 +14,7 @@ interface ContextInterface {
 
 //Create context
 const Context = React.createContext<ContextInterface>(
-	{} as ContextInterface // Provide a default value for TypeScript
+	{} as ContextInterface, // Provide a default value for TypeScript
 );
 
 //Export context hook
@@ -22,11 +22,18 @@ export const useContextData = () => useContext<ContextInterface>(Context);
 
 //Export context provider
 export const DataProvider = ({ children }: any) => {
-	const [tokens, setTokens] = useState<Tokens>({ accessToken: "", refreshToken: "" });
+	const [tokens, setTokens] = useState<Tokens>({
+		accessToken: "",
+		refreshToken: "",
+	});
 	const [data, setData] = useState<User>({ username: "", skills: [] });
 
 	useEffect(() => {
-		if (!isExpired(tokens.accessToken) && tokens.accessToken && data.username !== "") {
+		if (
+			!isExpired(tokens.accessToken) &&
+			tokens.accessToken &&
+			data.username !== ""
+		) {
 			axios
 				.post("http://localhost:3001/commitData", data, {
 					headers: {
@@ -37,7 +44,11 @@ export const DataProvider = ({ children }: any) => {
 					console.log(err);
 				});
 		}
-		if (isExpired(tokens.accessToken) && tokens.refreshToken !== "" && data.username !== "") {
+		if (
+			isExpired(tokens.accessToken) &&
+			tokens.refreshToken !== "" &&
+			data.username !== ""
+		) {
 			// console.log("refreshing");
 			axios
 				.post("http://localhost:3001/refreshAccess", {
@@ -45,7 +56,10 @@ export const DataProvider = ({ children }: any) => {
 				})
 				.then((res): void => {
 					if (res.data.accessToken) {
-						setTokens({ accessToken: res.data.accessToken, refreshToken: tokens.refreshToken });
+						setTokens({
+							accessToken: res.data.accessToken,
+							refreshToken: tokens.refreshToken,
+						});
 						window.localStorage.setItem("accessToken", res.data.accessToken);
 					}
 				})
@@ -73,5 +87,9 @@ export const DataProvider = ({ children }: any) => {
 		}
 	}, [data, tokens]);
 
-	return <Context.Provider value={{ tokens, setTokens, data, setData }}>{children}</Context.Provider>;
+	return (
+		<Context.Provider value={{ tokens, setTokens, data, setData }}>
+			{children}
+		</Context.Provider>
+	);
 };

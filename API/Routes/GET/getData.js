@@ -17,7 +17,10 @@ module.exports = function (mongo) {
 	}
 
 	router.get("/", handleAccess, async (req, res) => {
-		let tmp = await mongo.collection("skills").find({ username: req.body.username }).toArray();
+		let tmp = await mongo
+			.collection("skills")
+			.find({ username: req.body.username })
+			.toArray();
 		res.json(tmp);
 	});
 

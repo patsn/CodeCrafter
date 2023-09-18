@@ -20,7 +20,7 @@ module.exports = function (mongo) {
 							skills: req.body.skills,
 						},
 					},
-					{ upsert: true }
+					{ upsert: true },
 				);
 				res.sendStatus(200);
 			}
